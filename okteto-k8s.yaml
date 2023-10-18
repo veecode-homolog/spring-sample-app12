@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-sample-app12 
+spec:
+  selector:
+    matchLabels:
+      app: spring-sample-app12
+  template:
+    metadata:
+      labels:
+        app: spring-sample-app12
+    spec:
+      containers:
+        - image: okteto.dev/java-gradle-spring-sample-app12:1.0.0
+          name: spring-sample-app12
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-sample-app12
+spec:
+  type: ClusterIP
+  ports:
+    - name: "spring-sample-app12"
+      port: 8080
+  selector:
+    app: spring-sample-app12
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-sample-app12
+  annotations:
+    dev.okteto.com/generate-host: spring-sample-app12
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: spring-sample-app12
+                port:
+                  number: 8080
+            path: /
+            pathType: ImplementationSpecific

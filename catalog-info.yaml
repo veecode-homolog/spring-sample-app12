@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: spring-sample-app12
+  annotations:
+    github.com/project-slug: veecode-homolog/spring-sample-app12
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: "spring-sample-app12"
+    vault.io/secrets-path: "spring-sample-app12"
+    grafana/tag-selector: "spring-sample-app12"
+    grafana/alert-label-selector: "alertname=spring-sample-app12"
+    argocd/proxy-url: '/argocd/api'
+    argocd/app-name: "spring-sample-app12"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "group:default/admin"
+
+
+

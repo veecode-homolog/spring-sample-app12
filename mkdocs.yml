@@ -1,0 +1,8 @@
+site_name: "spring-sample-app12"
+site_description: 
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
